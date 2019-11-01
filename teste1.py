@@ -44,8 +44,9 @@ x = mycol.insert_many(mylist)
 
 #print list of the _id values of the inserted documents:
 print(x.inserted_ids)
+'''
 
-
+'''
 mylist = [
   { "_id": 1, "name": "John", "address": "Highway 37"},
   { "_id": 2, "name": "Peter", "address": "Lowstreet 27"},
@@ -78,6 +79,7 @@ print(x.inserted_ids)
 #for x in mycol.find({},{ "name": 1, "address": 1 }):
 #  print(x)
 
+'''
 myquery = { "address": { "$regex": "^S" } }
 
 mydoc = mycol.find(myquery)
@@ -86,7 +88,18 @@ for x in mydoc:
   print(x)
 
 
-mydoc = mycol.find().sort("name")
+mydoc = mycol.find().sort("_id")
 
 for x in mydoc:
   print(x)
+'''
+
+# sort descending
+mydoc = mycol.find().sort("name", -1)
+
+for x in mydoc:
+  print(x)
+
+#x = mycol.delete_many({})
+
+#mycol.drop()
